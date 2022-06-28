@@ -1,0 +1,20 @@
+used for open port of your system 
+
+create ports.txt >> for($i=0 ; $i-lt 65546 ; $i=$i+1) {  $i >> port.txt; }   
+
+
+then used it in 
+
+$system_ports = Get-NetTCPConnection -State Listen
+
+$text_port = Get-Content -Path C:\Users\Administrator\Desktop\ports.txt
+
+foreach($port in $text_port){
+
+if($port -in $system_ports.LocalPort){
+
+echo $port
+
+}
+
+}
